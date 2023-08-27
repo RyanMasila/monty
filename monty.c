@@ -1,5 +1,5 @@
 #include "monty.h"
-int sq_flag = 0;
+global_var var_global;
 /**
  * main - driver function for monty program
  * @ac: int num of arguments
@@ -13,10 +13,12 @@ int main(int ac, char **av)
 	stack = NULL;
 	if (ac != 2)
 	{
-		printf("USAGE: monty file\n");
-		error_exit(&stack);
+		fprintf(stderr, "USAGE: monty file\n");
+		exit(EXIT_FAILURE);
 	}
+
 	read_file(av[1], &stack);
+    /* recordar liberar memorias */
 	free_dlistint(stack);
 	return (0);
 }
